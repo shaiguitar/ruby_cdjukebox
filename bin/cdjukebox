@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require "cdjukebox"
+
+# our compiled code in rubyland
+p = CDPlayer.new(1)
+puts "Unit is #{p.unit}"
+p.seek(3, 16) {|x| puts "#{x}% done" }
+puts "Avg. time was #{p.seekTime} seconds"
+
+#Unit is 1
+#Avg. time was 20000.0 seconds
