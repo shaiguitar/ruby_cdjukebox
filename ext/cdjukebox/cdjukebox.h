@@ -10,7 +10,6 @@ typedef struct CDJukebox {
 
 // MOCK LIB START
 
-
 struct CDJukebox * CDPlayerNew(int unit_id)
 {
   struct CDJukebox* juke = malloc(sizeof(*juke));
@@ -20,10 +19,11 @@ struct CDJukebox * CDPlayerNew(int unit_id)
 void CDPlayerSeek(CDJukebox *rec, int disc, int track, void (*done)(CDJukebox *rec, int percent)) { }
 void CDPlayerDispose(CDJukebox *rec) { free(rec); }
 
-// gimme_double from linked library...
-//double CDPlayerAvgSeekTime(CDJukebox *rec) { return(doubleme()); }
-double CDPlayerAvgSeekTime(CDJukebox *rec) { return(20000.0); }
-
+#ifdef DOUBLEME
+  double CDPlayerAvgSeekTime(CDJukebox *rec) { return(doubleme()); }
+#else
+  double CDPlayerAvgSeekTime(CDJukebox *rec) { return(20000.0); }
+#endif
 
 // MOCK LIB END
 
